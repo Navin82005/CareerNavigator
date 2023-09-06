@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Organization | {{user.organization.name}}
+{% endblock %}
+
+{% block nav %}
+<li><a href="blog">blog</a></li>
+<li><a href="news">news</a></li>
+<li><a href="contact">contact</a></li>
+{% endblock %}
+
+
+
+{% if user.organization %}
+{% endif %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/org/profile.css' %}">
+<div class="orgprofile container-fluid">
+    <h1>{{user.organization}}</h1>
+</div>
+
+{% endblock %}

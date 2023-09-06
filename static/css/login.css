@@ -1,0 +1,158 @@
+.home {
+    height: 100vh;
+}
+
+.home_container {
+    top: 0;
+    height: auto;
+    bottom: 0;
+
+}
+
+.home_container .container {
+    margin: 0;
+}
+
+.home_container .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+}
+
+.home_container .col .card {
+    background-color: rgba(0, 0, 0, .4);
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    padding: 20px;
+}
+
+.home_container .col .card .contact_form_container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: auto 20px;
+}
+
+.row-org .contact_name_col {
+    align-items: center !important;
+    display: flex !important;
+}
+
+.row-org .contact_name_col label {
+    margin: 0;
+}
+
+.row-org .contact_name_col input[type=checkbox] {
+    margin: 0 10px;
+}
+
+#password {
+    padding-right: 45px;
+}
+
+.password-icon {
+    font-size: 1rem;
+    position: absolute;
+    right: 25px;
+    top: 13px;
+}
+
+.card .card-header {
+    color: #aaa;
+}
+
+.card .contact_form_container input {
+    height: 40px;
+}
+
+.card .contact_form_container {
+    margin: 0 30px !important;
+}
+
+.card .login-label {
+    color: #aaa;
+}
+
+.login_para {
+    color: #fff;
+    letter-spacing: -1px;
+}
+
+.home_title h6 {
+    margin: 0 !important;
+    color: #fff;
+}
+
+.home_title-login_para {
+    margin: auto;
+    max-width: 80%;
+}
+
+.login-para {
+    color: #aaa;
+    padding: 0 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.card-header span {
+    display: none;
+}
+
+.login-footer {
+    display: none;
+    color: #aaa;
+    padding: 0 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.error {
+    color: rgb(255, 60, 60);
+    text-align: center;
+    margin: 10px 0 30px 0;
+}
+
+@media (max-width: 790px) {
+    .contact_name_col {
+        margin: 0;
+    }
+
+    .row {
+        display: block;
+    }
+
+    .card {
+        padding: 0 20px;
+    }
+
+    .login-footer {
+        display: block;
+    }
+
+    .card-header {
+        font-size: 1.9rem;
+    }
+
+    .card-header span {
+        display: inline;
+    }
+
+    .login-para {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .card-header {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        padding: 0 50px;
+    }
+}

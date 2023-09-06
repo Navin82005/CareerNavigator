@@ -1,0 +1,116 @@
+:root {
+    --profile-arrow: #5918DF;
+    --profile-name: #fff;
+    --nav-links: #87868B;
+    --nav-links-after: #484848;
+    --cursor-inner: rgb(255, 111, 0);
+    --cursor-outer: rgb(255, 111, 0);
+    --time-line: #5918DF;
+    --scrollbar-base-color: #422282;
+    --work-project-content: #aaa;
+    --state: #8A8292;
+    --profile-background-color: #100D18;
+    --profile-background-about-color: #191425;
+}
+
+*,
+:hover {
+    cursor: none !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+    .curser-inner {
+        transform: scale(2);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-base-color);
+    border-radius: 2px;
+}
+
+
+.curser-outer {
+    transform-origin: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    outline: 1px solid var(--cursor-outer);
+    pointer-events: none;
+    transition: .1s;
+    mix-blend-mode: difference;
+    z-index: 1000;
+}
+
+.curser-inner {
+    transform-origin: center;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    height: 7px;
+    width: 7px;
+    pointer-events: none;
+    border-radius: 50%;
+    background-color: var(--cursor-inner);
+    mix-blend-mode: difference;
+    z-index: 1000;
+}
+
+.fa-location-arrow {
+    font-size: 3rem;
+    transition: all .3s;
+}
+
+.logo_content {
+    width: auto;
+    height: 100%;
+    font-family: 'Montserrat', serif;
+    display: flex !important;
+    text-align: center !important;
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.logo_container .logo_img i {
+    color: #0341b4 !important;
+}
+
+#profile {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+
+#profile a {
+    height: 100% !important;
+    width: 100% !important;
+    padding: 0;
+}
+
+#profile a:hover {
+    background-color: transparent;
+}
+
+#profile img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}

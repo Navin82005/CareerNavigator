@@ -1,0 +1,109 @@
+.organization-org {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.organization-org form {
+    margin: 2vw;
+}
+
+.organization-org .contact_name_col input {
+    height: 40px;
+    padding-right: 20px;
+}
+
+.organization-org .contact_name_col {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.organization-org .contact_name_col label {
+    margin: 0;
+}
+
+.organization-org .contact_name_col i {
+    margin-left: 10px;
+}
+
+.highlight__text {
+    font-weight: bold;
+    transition: border-radius 250ms, border-color 250ms ease-out;
+}
+
+.highlight__tooltip {
+    color: #f3f3f3;
+    background: #111111;
+    padding: 15px;
+    width: clamp(180px, 100%, 375px);
+    font-weight: normal;
+    font-style: normal;
+    z-index: 1;
+    position: absolute;
+    align-items: center;
+    gap: 0.25rem;
+    display: none;
+    border-radius: 0.25rem;
+    top: calc(100% + 5px);
+    /* left: 50%; */
+    transform: translateX(-50%);
+}
+
+.highlight__tooltip:after {
+    content: "";
+    border: 5px solid transparent;
+    border-bottom-color: #111111;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translatex(-50%) translatey(-10px);
+}
+
+.highlight:hover .highlight__text,
+.highlight:focus .highlight__text {
+    border-radius: 0;
+    border-color: transparent;
+}
+
+.highlight:hover .highlight__tooltip,
+.highlight:focus .highlight__tooltip {
+    display: grid;
+    animation: fadeIn 250ms;
+}
+
+.highlight:focus .highlight__tooltip {
+    z-index: 2;
+}
+
+.highlight.highlight--link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.highlight.highlight--link .highlight__tooltip {
+    grid-template-columns: auto 1fr;
+    min-width: 180px;
+    width: max-content;
+    max-width: 100%;
+}
+
+.highlight.highlight--link .highlight__href {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

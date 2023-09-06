@@ -1,0 +1,423 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Career Navigator | Home{% endblock %}
+{% block content %}
+<div class="super_container">
+    <div class="home">
+        <div class="home_slider_container">
+            <div class="owl-carousel owl-theme home_slider">
+                <div class="owl-item">
+                    <div class="home_slider_background" style="background-image:url({% static 'images/index.jpg' %})">
+                    </div>
+                    <div class="home_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="home_content text-center">
+                                        <div class="home_logo"><img src="{% static 'images/home_logo.png' %}" alt="">
+                                        </div>
+                                        <div class="home_text">
+                                            <div class="home_title">Empowering Your Career</div>
+                                            <div class="home_subtitle">Embark on a journey of professional growth with
+                                                Career Navigator. Our platform offers personalized guidance and
+                                                resources to help you navigate the path to your dream career.
+                                            </div>
+                                        </div>
+                                        <div class="home_buttons">
+                                            <div class="button home_button">
+                                                <a href="/">
+                                                    Get Started
+                                                    <div class="button_arrow"><i class="fa fa-angle-right"
+                                                            aria-hidden="true"></i></div>
+                                                </a>
+                                            </div>
+                                            <div class="button home_button">
+                                                <a href="/">
+                                                    Learn More
+                                                    <div class="button_arrow"><i class="fa fa-angle-right"
+                                                            aria-hidden="true"></i></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-item">
+                    <div class="home_slider_background" style="background-image:url({% static 'images/index1.jpg' %})">
+                    </div>
+                    <div class="home_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="home_content text-center">
+                                        <div class="home_logo"><img src="{% static 'images/home_logo.png' %}" alt="">
+                                        </div>
+                                        <div class="home_text">
+                                            <div class="home_title">Personal Advancement</div>
+                                            <div class="home_subtitle">Empower yourself with a comprehensive range of
+                                                services that pave the way for your professional success. Choose Career
+                                                Navigator as your partner in navigating the intricacies of your career
+                                                journey.
+                                            </div>
+                                        </div>
+                                        <div class="home_buttons">
+                                            <div class="button home_button">
+                                                <a href="/">
+                                                    learn more
+                                                    <div class="button_arrow"><i class="fa fa-angle-right"
+                                                            aria-hidden="true"></i></div>
+                                                </a>
+                                            </div>
+                                            <div class="button home_button">
+                                                <a href="/">
+                                                    get into navigator
+                                                    <div class="button_arrow"><i class="fa fa-angle-right"
+                                                            aria-hidden="true"></i></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses -->
+    <div class="courses">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="section_title text-center">
+                        <h2>At Your Service</h2>
+                    </div>
+                    <div class="section_subtitle">Empower yourself with a comprehensive range of services that pave the
+                        way for your professional success. Choose Career Navigator as your partner in navigating the
+                        intricacies of your career journey.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {{message}}
+
+                <div class="col">
+                    <div class="courses_slider_container">
+                        <div class="owl-carousel owl-theme courses_slider">
+                            {% for organization, event in events.items %}
+                            {% for item in event %}
+                            <div class="owl-item">
+                                <div class="course">
+                                    <div class="course_image">
+
+                                        {% if item.image %}
+                                        <img src="{{item.image.url}}" alt="">
+                                        {% endif %}
+                                    </div>
+                                    <div class="course_body">
+                                        <div
+                                            class="course_header d-flex flex-row align-items-center justify-content-start">
+                                            <div class="course_tag"><a href="/">{{item.eventType}}</a></div>
+                                            <div class="course_price ml-auto">
+                                                Upcoming<!--: <span>{{item.startDate}}</span>-->
+                                            </div>
+                                        </div>
+                                        <div class="course_title">
+                                            <h3><a href="courses">{{item.title}}</a></h3>
+                                        </div>
+                                        <div class="course_text">{{item.content}}
+                                        </div>
+                                        <div class="course_footer d-flex align-items-center justify-content-start">
+                                            <div class="course_author_image"><img src="{{organization.image.url}}"
+                                                    alt="{{organization}}"></div>
+                                            <div class="course_author_name">By <a href="/">{{organization}}</a>
+                                            </div>
+                                            <div class="course_sales ml-auto"><span>{{item.applications}}</span>
+                                                Applications</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endfor %}
+
+                        </div>
+                        <!-- Courses Slider Nav -->
+                        <div class="courses_slider_nav courses_slider_prev trans_200"><i class="fa fa-angle-left"
+                                aria-hidden="true"></i></div>
+                        <div class="courses_slider_nav courses_slider_next trans_200"><i class="fa fa-angle-right"
+                                aria-hidden="true"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Milestones -->
+    <div class="milestones">
+        <!-- Background image artis https://unsplash.com/@thepootphotographer -->
+        <div class="parallax_background parallax-window" data-parallax="scroll"
+            data-image-src="{% static 'images/milestones.jpg' %}" data-speed="0.8"></div>
+        <div class="container">
+            <div class="row milestones_container">
+                <!-- Milestone -->
+                <div class="col-lg-3 milestone_col">
+                    <div class="milestone text-center">
+                        <div class="milestone_icon"><img src="{% static 'images/milestone_1.svg' %}" alt=""></div>
+                        <div class="milestone_counter" data-end-value="1548">0</div>
+                        <div class="milestone_text">Organizations</div>
+                    </div>
+                </div>
+                <!-- Milestone -->
+                <div class="col-lg-3 milestone_col">
+                    <div class="milestone text-center">
+                        <div class="milestone_icon"><img src="{% static 'images/milestone_2.svg' %}" alt=""></div>
+                        <div class="milestone_counter" data-end-value="7286">0</div>
+                        <div class="milestone_text">Students</div>
+                    </div>
+                </div>
+                <!-- Milestone -->
+                <div class="col-lg-3 milestone_col">
+                    <div class="milestone text-center">
+                        <div class="milestone_icon"><img src="{% static 'images/milestone_3.svg' %}" alt=""></div>
+                        <div class="milestone_counter" data-end-value="257">0</div>
+                        <div class="milestone_text">Teachers</div>
+                    </div>
+                </div>
+                <!-- Milestone -->
+                <div class="col-lg-3 milestone_col">
+                    <div class="milestone text-center">
+                        <div class="milestone_icon"><img src="{% static 'images/milestone_4.svg' %}" alt=""></div>
+                        <div class="milestone_counter" data-end-value="39">0</div>
+                        <div class="milestone_text">Countries</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sections -->
+    <div class="grouped_sections">
+        <div class="container">
+            <div class="row">
+                <!-- Why Choose Us -->
+                <div class="col-lg-4 grouped_col">
+                    <div class="grouped_title">Why Choose Us?</div>
+                    <div class="accordions">
+                        <div class="accordion_container">
+                            <div class="accordion d-flex flex-row align-items-center active">
+                                <div>Mauris vehicula nisi congue?</div>
+                            </div>
+                            <div class="accordion_panel">
+                                <div>
+                                    <p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod
+                                        pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem
+                                        venenatis in. Aenean id varius quam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion_container">
+                            <div class="accordion d-flex flex-row align-items-center">
+                                <div>Vehicula nisi congue, blandit?</div>
+                            </div>
+                            <div class="accordion_panel">
+                                <div>
+                                    <p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod
+                                        pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem
+                                        venenatis in. Aenean id varius quam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion_container">
+                            <div class="accordion d-flex flex-row align-items-center">
+                                <div>Mauris vehicula nisi congue?</div>
+                            </div>
+                            <div class="accordion_panel">
+                                <div>
+                                    <p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod
+                                        pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem
+                                        venenatis in. Aenean id varius quam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion_container">
+                            <div class="accordion d-flex flex-row align-items-center">
+                                <div>Nisi congue, blandit purus sed?</div>
+                            </div>
+                            <div class="accordion_panel">
+                                <div>
+                                    <p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod
+                                        pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem
+                                        venenatis in. Aenean id varius quam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 grouped_col">
+                    <div class="grouped_title">Upcoming Events</div>
+                    <div class="events">
+                        <div class="event d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                    <div class="event_day">20</div>
+                                    <div class="event_month">April</div>
+                                </div>
+                            </div>
+                            <div class="event_body">
+                                <div class="event_title"><a href="/">New Marketing Course Release</a></div>
+                                <div class="event_subtitle">Location: Online Platform</div>
+                            </div>
+                        </div>
+                        <div class="event d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                    <div class="event_day">23</div>
+                                    <div class="event_month">April</div>
+                                </div>
+                            </div>
+                            <div class="event_body">
+                                <div class="event_title"><a href="/">Students Art Workshop</a></div>
+                                <div class="event_subtitle">Location: Online Platform</div>
+                            </div>
+                        </div>
+                        <div class="event d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                    <div class="event_day">25</div>
+                                    <div class="event_month">April</div>
+                                </div>
+                            </div>
+                            <div class="event_body">
+                                <div class="event_title"><a href="/">Launch Party for a new Platform</a></div>
+                                <div class="event_subtitle">Location: Online Platform</div>
+                            </div>
+                        </div>
+                        <div class="event d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                    <div class="event_day">27</div>
+                                    <div class="event_month">April</div>
+                                </div>
+                            </div>
+                            <div class="event_body">
+                                <div class="event_title"><a href="/">New Marketing Course</a></div>
+                                <div class="event_subtitle">Location: Online Platform</div>
+                            </div>
+                        </div>
+                        <div class="event d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                    <div class="event_day">29</div>
+                                    <div class="event_month">April</div>
+                                </div>
+                            </div>
+                            <div class="event_body">
+                                <div class="event_title"><a href="/">New Marketing Course</a></div>
+                                <div class="event_subtitle">Location: Online Platform</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 grouped_col">
+                    <div class="grouped_title">Latest News</div>
+                    <div class="news">
+                        <div class="news_post d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div class="news_post_image"><img src="{% static 'images/news_1.jpg' %}"
+                                        alt="https://unsplash.com/@beccatapert"></div>
+                            </div>
+                            <div class="news_post_body">
+                                <div class="news_post_date">April 02, 2018</div>
+                                <div class="news_post_title"><a href="news">Why Choose online education?</a>
+                                </div>
+                                <div class="news_post_author">By <a href="/">William Smith</a></div>
+                            </div>
+                        </div>
+                        <div class="news_post d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div class="news_post_image"><img src="{% static 'images/news_2.jpg' %}"
+                                        alt="https://unsplash.com/@nbb_photos"></div>
+                            </div>
+                            <div class="news_post_body">
+                                <div class="news_post_date">April 02, 2018</div>
+                                <div class="news_post_title"><a href="news">Books, Kindle or tablet?</a></div>
+                                <div class="news_post_author">By <a href="/">William Smith</a></div>
+                            </div>
+                        </div>
+                        <div class="news_post d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div class="news_post_image"><img src="{% static 'images/news_3.jpg' %}"
+                                        alt="https://unsplash.com/@rawpixel"></div>
+                            </div>
+                            <div class="news_post_body">
+                                <div class="news_post_date">April 02, 2018</div>
+                                <div class="news_post_title"><a href="news">Why Choose online education?</a>
+                                </div>
+                                <div class="news_post_author">By <a href="/">William Smith</a></div>
+                            </div>
+                        </div>
+                        <div class="news_post d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div class="news_post_image"><img src="{% static 'images/news_4.jpg' %}"
+                                        alt="https://unsplash.com/@jtylernix"></div>
+                            </div>
+                            <div class="news_post_body">
+                                <div class="news_post_date">April 02, 2018</div>
+                                <div class="news_post_title"><a href="news">Books, Kindle or tablet?</a></div>
+                                <div class="news_post_author">By <a href="/">William Smith</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="video">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="video_container_outer">
+                        <div class="video_container">
+
+                            {% static ''%}
+                            {% with poster_url=static|add:'images/video.jpg' %}
+                            <video id="vid1" class="video-js vjs-default-skin" controls
+                                data-setup='{ "poster": "/static/images/video.jpg", "techOrder" : ["youtube"], "sources" : [{ "type" : "video/youtube" , "src": "https://youtu.be/5_MRXyYjHDk" }], "youtube" : { "iv_load_policy" : 1 } }'>
+                            </video>
+                            {% endwith %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="join">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="section_title text-center">
+                        <h2>Join Our Platform Today</h2>
+                    </div>
+                    <div class="section_subtitle">Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut
+                        euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in.
+                        Aenean id varius quam. Nullam bibendum interdum dui, ac tempor lorem convallis ut
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button join_button">
+            <a href="/">
+                register now
+                <div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+            </a>
+        </div>
+    </div>
+    {% endblock %}

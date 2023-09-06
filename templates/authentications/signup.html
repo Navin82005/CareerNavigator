@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Signup | Career Navigator</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Elearn project">
+    <script src="https://kit.fontawesome.com/9891bbb6e0.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'plugins/video-js/video-js.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/elements.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/elements_responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+
+<body>
+
+    <div class="super_container">
+
+        <div class="curser-outer"></div>
+        <div class="curser-inner"></div>
+
+        <div class="home">
+            <!-- Background image artist https://unsplash.com/@thepootphotographer -->
+            <div class="home_background parallax_background parallax-window" data-parallax="scroll"
+                data-image-src="{% static 'images/elements.jpg' %}" data-speed="0.8"></div>
+            <div class="home_container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <h1 class="card-header">SignUp<span> To Career<br>Navigator</span></h1>
+                                <h3 class="card-header login-para">Join the others by just a click.</h3>
+                                <h3 class="login-para">Signup by entering the below details.</h3>
+                                <br>
+
+                                <div class="contact_form_container">
+                                    <form action="/auth/register/" method="post" id="contact_form" class="contact_form">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-lg-6 contact_name_col">
+                                                <label for="name" class="login-label">User Name</label>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="text" id="name" name="name" class="contact_input"
+                                                    placeholder="User Name" value="{{rerenderData.name}}"
+                                                    required="required">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 contact_name_col">
+                                                <label for="email" class="login-label">E-mail</label>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="email" id="email" name="email" class="contact_input"
+                                                    placeholder="E-mail" value="{{rerenderData.email}}"
+                                                    required="required">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 contact_name_col">
+                                                <label for="password" class="login-label">Password</label>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="password" name="password" id="password"
+                                                    class="contact_input" placeholder="Password" required="required">
+                                                <i class="fa-solid fa-eye-slash password-icon" id="password-icon"
+                                                    onclick="showPassword()"></i>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 contact_name_col">
+                                                <label for="reenterpassword" class="login-label">Re-Enter
+                                                    Password</label>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="password" name="reenterpassword" id="reenterpassword"
+                                                    class="contact_input" placeholder="Re-Enter Password"
+                                                    required="required">
+                                                <i class="fa-solid fa-eye-slash password-icon" id="repassword-icon"
+                                                    onclick="showreenterPassword()"></i>
+                                            </div>
+                                        </div>
+                                        <div class="row row-org">
+                                            <div class="col-lg-6 contact_name_col">
+                                                <input type="checkbox" name="org" id="checkbox-org">
+                                                <label for="checkbox-org">Organization?</label>
+                                            </div>
+                                            <div class="col-lg-6 contact_name_col">
+                                                <button class="contact_button"><span>Sign Up</span><span
+                                                        class="button_arrow"><i class="fa fa-angle-right"
+                                                            aria-hidden="true"></i></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        {% if error.state == "exists" %}
+                                        <h5 class="error">{{ error.message }} <a href="/auth/login">Login?</a></h5>
+                                        {% endif %}
+                                        {% if error.state == "wrongPassword" %}
+                                        <h5 class="error">{{ error.message }}</h5>
+                                        {% endif %}
+
+
+                                    </form>
+                                </div>
+
+                                <div class="login-footer">
+                                    <div class="breadcrumbs">
+                                        <div class="home_title">
+                                            <h6>Don't have an account? Just create one.</h6>
+                                        </div>
+                                        <ul>
+                                            <li><a href="/auth/signup">SignUp</a></li>
+                                            <li><a href="/">Home</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="home_content text-center">
+                                <div class="home_title">Career Navigator</div>
+                                <br>
+                                <div class="home_title-login_para">
+                                    <h3 class="login_para">Navigate your career trough Career Navigator</h3>
+                                </div>
+                                <div class="breadcrumbs">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>Signup</li>
+                                    </ul>
+                                </div>
+                                <div class="breadcrumbs">
+                                    <div class="home_title">
+                                        <h6>Already an account? Login now.</h6>
+                                    </div>
+                                    <ul>
+                                        <li><a href="/auth/login">Login</a></li>
+                                        <li><a href="/">Home</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/contact.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/contact_responsive.css' %}">
+    <script src="{% static 'js/login.js' %}"></script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+    <!-- <script src="{% static 'js/elements.js' %}"></script> -->
+    <script src="{% static 'js/base.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</body>
+
+</html>

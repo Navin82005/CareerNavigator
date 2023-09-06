@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/organization.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'styles/contact.css' %}" />
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" /> -->
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'styles/contact_responsive.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="organization-org">
+
+    <form action="/organization/upload/parse/data/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <h1>Create Student Accounts</h1>
+        <hr />
+        <div class="row">
+            <div class="col-lg-6 contact_name_col">
+                <label for="file-field1">Available Fields</label>
+                <span class="highlight" tabindex="0">
+                    <strong class="highlight__text"><i class="fa-solid fa-circle-info"></i></strong>
+                    <i class="highlight__tooltip">The fields that are available in the file. Example: Name, DOB, RollNo, Email.</i>
+                </span>
+            </div>
+            <div class="col-lg-6 contact_name_col">
+                <input class="contact_input" type="text" name="headers" id="file-field1" required />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 contact_name_col">
+                <label for="file-field">Upload File</label>
+            </div>
+            <div class="col-lg-6 contact_name_col">
+                <input type="file" id="file-field" accept=".csv, .xlsx" name="file" required />
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,228 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | {{profile.profile.name}}</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+</head>
+
+<body>
+    <div class="curser-outer"></div>
+    <div class="curser-inner"></div>
+    <nav>
+        <h1 class="profilename"><i class="fa-solid fa-angle-left"></i><span
+                class="name">{{profile.profile.name}}</span><span class="front-slash"></span><i
+                class="fa-solid fa-angle-right"></i></h1>
+        <ul>
+            <li><a id="active" href="#start">Start</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#lab">Lab</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div id="start-dot"></div>
+    <section id="start">
+
+        <img id="mouse-scroll" src="{% static 'images/mouse.png' %}" alt="">
+
+        <div id="start-container">
+            <div class="swap-in-text swap-in-text-state">
+                <div class="state text">Start /></div>
+            </div>
+            <div class="swap-in-text swap-in-text-para1">
+                <h1 class="para1 text">Hi, my name is <span>{{profile.first_name}}
+                        {{profile.last_name}}</span></h1>
+            </div>
+            <div class="swap-in-text swap-in-text-para2">
+                <h1 class="para2 text">i <i>design</i> and develop <span class="skill-typed"></span></h1>
+
+                <script>
+                    var develops_list = [
+                        {% for item in profile.profile_data.develops %}
+                    "{{ item }}"{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    ];
+
+                    let options = {
+                        strings: develops_list,
+                        typeSpeed: 100,
+                        backSpeed: 100,
+                        loop: true,
+                    }
+
+                    var typed = new Typed('.skill-typed', options);
+                </script>
+            </div>
+            <div class="swap-in-text swap-in-text-let-me-show">
+                <h2 class="text let-me-show">Let me show you...</h2>
+            </div>
+        </div>
+
+    </section>
+
+    <div id="work-dot"></div>
+    <section id="work">
+        <div class="state text">Work /></div>
+        <div class="work-container">
+            {% for project in project_works %}
+            <div class="project-container project-container-00"
+                style="background-image: url('{{project.1.image.url}}');">
+                <div class="project-content ">
+                    <h3>{{project.0.name}}</h3>
+                    <div class="swap-in-text">
+                        <div class="text">
+                            <h4><span>0{{forloop.counter}} <i class="fa-solid fa-arrow-right-long"></i></span></h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="video-section">
+        <video style="z-index: 10;" class="work-video" src="static/media/vadio.mp4" controls></video>
+    </section>
+
+    <!-- <section id="lab">
+        <div id="lab-dot"></div>
+        <div class="state text">Lab /></div>
+
+
+    </section> -->
+
+
+    <div id="about" class="min100vh yasio container-fluid">
+        <div class="row align-self-top w-100 align-items-start justify-content-center">
+            <div class="pt-0 offseted col-sm-9 col-md-9 offset-sm-2 col-10 offset-1">
+                <div class="timeline alt"></div> <small class="section-title bullet-title alt">About /&gt;</small>
+                <div class="mt-3">
+                    <div class="code-wrp">
+                        <div data-line-nr="01" class="code-l">
+                            <div class="methods">class</div> <span class="propname">{{profile.first_name}}
+                                {{profile.last_name}}</span> {
+                        </div>
+                        <div data-line-nr="02" class="code-l">
+                            <div class="dot">··</div>
+                            <div class="comment">// I can, because I did.</div>
+                        </div>
+                        <div data-line-nr="03" class="code-l">
+                            <div class="dot">··</div>
+                            <div class="comment">// My vast variety of skills is continuously expanding.</div>
+                        </div>
+                        <div data-line-nr="04" class="code-l">
+                            <div class="dot">··</div>
+                            <div class="methods">constructor</div>() {
+                        </div>
+                        <div data-line-nr="05" class="code-l">
+                            <div class="dot">····</div><span class="scope">this</span>.<span class="prop2">name</span>
+                            <span class="scope">=</span> <span class="string">'{{profile.first_name}}
+                                {{profile.last_name}}'</span>
+                        </div>
+                        <div data-line-nr="06" class="code-l">
+                            <div class="dot">····</div><span class="scope">this</span>.<span
+                                class="prop2">dayOfBirthTimestamp</span> <span class="scope">=</span> <span
+                                class="number">{{profile.profile.dob}}</span>
+                        </div>
+                        <div data-line-nr="07" class="code-l">
+                            <div class="dot">····</div><span class="scope">this</span>.<span class="prop2">email</span>
+                            <span class="scope">=</span> <span class="string">'{{profile.profile.email}}'</span>
+                        </div>
+                        <div data-line-nr="08" class="code-l">
+                            <div class="dot">··</div>}
+                        </div>
+                        <div data-line-nr="09" class="code-l">
+                            <div class="dot">··</div><span class="propname">workExperience</span>() {
+                        </div>
+                        <div data-line-nr="10" class="code-l">
+                            <div class="dot">····</div>
+                            <div class="methods">return</div> [
+                        </div>
+                        {% for year, work in work_experience.items %}
+                        <div data-line-nr="{{10|add:forloop.counter}}" class="code-l">
+                            <div class="dot">······</div>{ <span class="string">'{{year}}'</span> :<span class="string">
+                                '{{work}}'</span> }
+                        </div>
+                        {% endfor %}
+                        <div data-line-nr="16" class="code-l">
+                            <div class="dot">····</div>]
+                        </div>
+                        <div data-line-nr="17" class="code-l">
+                            <div class="dot">··</div>}
+                        </div>
+                        <div data-line-nr="18" class="code-l">
+                            <div class="dot">··</div><span class="propname">education</span>() {
+                        </div>
+                        <div data-line-nr="19" class="code-l">
+                            <div class="dot">····</div>
+                            <div class="methods">return</div> [
+                        </div>
+                        {% for year, university in education.items %}
+                        <div data-line-nr="{{19|add:forloop.counter}}" class="code-l">
+                            <div class="dot">······</div>{ <span class="string">'{{year}}'</span>:<span class="string">
+                                '{{university}}'</span> },
+                        </div>
+                        {% endfor %}
+                        <div data-line-nr="22" class="code-l">
+                            <div class="dot">····</div>]
+                        </div>
+                        <div data-line-nr="23" class="code-l">
+                            <div class="dot">··</div>}
+                        </div>
+                        <div data-line-nr="24" class="code-l">
+                            <div class="dot">··</div><span class="propname">skills</span>() {
+                        </div>
+                        <div data-line-nr="25" class="code-l">
+                            <div class="dot">····</div>
+                            <div class="methods">return</div> [ <span class="string">
+                                {% for skill in skills %}'{{skill}}', {% endfor %}</span><span class="cursor"></span> ]
+                        </div>
+                        <div data-line-nr="26" class="code-l">
+                            <div class="dot">··</div>}
+                        </div>
+                        <div data-line-nr="27" class="code-l">}</div>
+                    </div>
+                </div>
+            </div>
+        </div> <a href="#contact" aria-label="Go to next" class="cp down-arrow"><span>→</span></a>
+    </div>
+
+
+    <footer id="contact">
+        <div class="pr yasio container-fluid">
+            <div class="row w-100 justify-content-center">
+                <div class="mx-auto offseted col-sm-7 col-md-7 col-9">
+                    <div class="timeline alt"></div>
+                    <small class="section-title bullet-title alt">Contact /&gt;</small>
+                    <div class="main-footer-wrp">
+                        <h2 class="mt-3 pt-3 social-title">Find me on:</h2>
+                        <div class="social-wrp w-100 mb-3">
+                            {% for link in social_links %}
+                            <a target="_blank" rel="noreferrer" href="{{link.url}}">
+                                <i class="{{link.icon}}"></i>
+                                {{link.name}}
+                            </a>
+                            {% endfor %}
+                        </div>
+                        <button class="btn btn-primary">Get in touch<div class="btn2"></div></button>
+                    </div>
+                </div>
+                <div class="mx-auto copy col-7"><small>© Made with < / > by Pandass. Circa 2023.</small></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+    <script src="https://kit.fontawesome.com/9891bbb6e0.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
+</body>
+
+</html>

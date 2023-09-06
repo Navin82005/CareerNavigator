@@ -12,3 +12,5 @@
 /organization_api/__pycache__
 /profile_api/migrations
 /profile_api/__pycache__
+/search_api/__pycache__
+/search_api/migrations

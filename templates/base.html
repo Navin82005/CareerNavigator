@@ -171,7 +171,11 @@
             </div>
         </div>
     </div>
+
     {% block content %} {% endblock %}
+
+    {% block message %} {% endblock %}
+
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -279,6 +283,7 @@
     <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
     <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/message.js' %}"></script>
 </body>
 
 </html>

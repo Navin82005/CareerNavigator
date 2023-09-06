@@ -2,3 +2,13 @@
 /siet.xlsx
 /temp.py
 /tempData.txt
+/auth_api/migrations
+/auth_api/__pycache__
+/CareerNavigator/__pycache__
+/home_api/migrations
+/home_api/__pycache__
+/media
+/organization_api/migrations
+/organization_api/__pycache__
+/profile_api/migrations
+/profile_api/__pycache__
